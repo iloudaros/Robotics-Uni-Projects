@@ -1,0 +1,379 @@
+<!--  A simple quadruped -->
+
+<?xml version="1.0" ?>
+
+<robot name="iquadruped">
+
+    <!-- Colours -->
+
+    <material name="RLegs">
+        <color rgba="76 168 143 1"/>
+    </material>
+    <material name="LLegs">
+        <color rgba="43 97 83 1"/>
+    </material>
+    <material name="MBody">
+        <color rgba="90 90 90 1"/>
+    </material>
+
+
+    <!-- Κύριο Σώμα -->
+
+
+    <link name="main_body">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0.075"/>
+            <geometry>
+                <box size="0.3 0.8 0.3"/>
+            </geometry>
+            <material name="MBody"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0.075"/>
+            <geometry>
+                <box size="0.3 0.8 0.3"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <!-- Πόδια -->
+
+
+      <!-- Ώμοι -->
+
+
+      <link name="front_left_shoulder">
+          <visual>
+              <origin rpy="0 0 0" xyz="0 0 0.05"/>
+              <geometry>
+                  <box size="0.1 0.1 0.1"/>
+              </geometry>
+              <material name="RLegs"/>
+          </visual>
+
+          <collision>
+              <origin rpy="0 0 0" xyz="0 0 0.05"/>
+              <geometry>
+                  <box size="0.1 0.1 0.1"/>
+              </geometry>
+          </collision>
+      </link>
+
+      <link name="front_right_shoulder">
+          <visual>
+              <origin rpy="0 0 0" xyz="0 0 0.05"/>
+              <geometry>
+                  <box size="0.1 0.1 0.1"/>
+              </geometry>
+              <material name="LLegs"/>
+          </visual>
+
+          <collision>
+              <origin rpy="0 0 0" xyz="0 0 0.05"/>
+              <geometry>
+                  <box size="0.1 0.1 0.1"/>
+              </geometry>
+          </collision>
+      </link>
+
+      <link name="back_left_shoulder">
+          <visual>
+              <origin rpy="0 0 0" xyz="0 0 0.05"/>
+              <geometry>
+                  <box size="0.1 0.1 0.1"/>
+              </geometry>
+              <material name="RLegs"/>
+          </visual>
+
+          <collision>
+              <origin rpy="0 0 0" xyz="0 0 0.05"/>
+              <geometry>
+                  <box size="0.1 0.1 0.1"/>
+              </geometry>
+          </collision>
+      </link>
+
+      <link name="back_right_shoulder">
+          <visual>
+              <origin rpy="0 0 0" xyz="0 0 0.05"/>
+              <geometry>
+                  <box size="0.1 0.1 0.1"/>
+              </geometry>
+              <material name="LLegs"/>
+          </visual>
+
+          <collision>
+              <origin rpy="0 0 0" xyz="0 0 0.05"/>
+              <geometry>
+                  <box size="0.1 0.1 0.1"/>
+              </geometry>
+          </collision>
+      </link>
+
+
+    <!-- ΚΣ-Ω -->
+
+
+    <joint name="front_left_shoulder_pitch" type="continuous">
+        <parent link="main_body"/>
+        <child link="front_left_shoulder"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 20 0" xyz="0.175 -0.3 0.075"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <joint name="front_right_shoulder_pitch" type="continuous">
+        <parent link="main_body"/>
+        <child link="front_right_shoulder"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 -20 0" xyz="-0.175 -0.3 0.075"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <joint name="back_left_shoulder_pitch" type="continuous">
+        <parent link="main_body"/>
+        <child link="back_left_shoulder"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 20 0" xyz="0.175 0.3 0.075"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <joint name="back_right_shoulder_pitch" type="continuous">
+        <parent link="main_body"/>
+        <child link="back_right_shoulder"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 -20 0" xyz="-0.175 0.3 0.075"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+
+    <!-- Άνω μέρος Ποδιού -->
+
+
+    <link name="front_left_upper_leg">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+            <material name="RLegs"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="front_right_upper_leg">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+            <material name="LLegs"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="back_left_upper_leg">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+            <material name="RLegs"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="back_right_upper_leg">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+            <material name="LLegs"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <!-- Ω-ΠΜΠ -->
+
+
+    <joint name="front_left_upper_leg_roll" type="continuous">
+        <parent link="front_left_shoulder"/>
+        <child link="front_left_upper_leg"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 0 100" xyz="0 0 0.1"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <joint name="front_right_upper_leg_roll" type="continuous">
+        <parent link="front_right_shoulder"/>
+        <child link="front_right_upper_leg"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 0 -100" xyz="0 0 0.1"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <joint name="back_left_upper_leg_roll" type="continuous">
+        <parent link="back_left_shoulder"/>
+        <child link="back_left_upper_leg"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 0 100" xyz="0 0 0.1"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <joint name="back_right_upper_leg_roll" type="continuous">
+        <parent link="back_right_shoulder"/>
+        <child link="back_right_upper_leg"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 0 -100" xyz="0 0 0.1"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+
+    <!-- Κάτω μέρος Ποδιού -->
+
+
+    <link name="front_left_lower_leg">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+            <material name="RLegs"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="front_right_lower_leg">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+            <material name="LLegs"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="back_left_lower_leg">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+            <material name="RLegs"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="back_right_lower_leg">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+            <material name="LLegs"/>
+        </visual>
+
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0.15 0.025"/>
+            <geometry>
+                <box size="0.05 0.3 0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <!-- ΠΜΠ-ΚΜΠ -->
+
+
+    <joint name="front_left_lower_leg_yaw" type="continuous">
+        <parent link="front_left_upper_leg"/>
+        <child link="front_left_lower_leg"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 0 300" xyz="0 0.3 0"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <joint name="front_right_lower_leg_yaw" type="continuous">
+        <parent link="front_right_upper_leg"/>
+        <child link="front_right_lower_leg"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 0 -300" xyz="0 0.3 0"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <joint name="back_left_lower_leg_yaw" type="continuous">
+        <parent link="back_left_upper_leg"/>
+        <child link="back_left_lower_leg"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 0 300" xyz="0 0.3 0"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <joint name="back_right_lower_leg_yaw" type="continuous">
+        <parent link="back_right_upper_leg"/>
+        <child link="back_right_lower_leg"/>
+        <limit effort="2.5" velocity="10.0"/>
+        <origin rpy="0 0 -300" xyz="0 0.3 0"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+</robot>
